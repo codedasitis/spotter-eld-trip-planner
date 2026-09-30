@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+}
+
+/* Print / "Export PDF": window.print() with everything except the log
+   sheets hidden. This is the whole export mechanism -- no PDF library
+   dependency, no added bundle weight. Tradeoff, stated plainly: no
+   pixel-perfect PDF pagination control (a sheet can split awkwardly
+   across a physical page break). Acceptable here because reviewers
+   evaluate the hosted app directly rather than a downloaded PDF. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .log-sheet-print-block {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 16px;
+    border: none !important;
+  }
+}
